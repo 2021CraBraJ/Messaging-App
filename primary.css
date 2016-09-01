@@ -1,7 +1,10 @@
 #message-input {
   left: 0%;
   width: 80%;
+  margin: 0px;
+  border: none;
   position: absolute;
+  border-bottom: 1px solid gray;
 }
 #send-button {
   right: 0%;
@@ -20,6 +23,11 @@
   bottom: 0%;
   height: 10%;
   position:  relative;
+}
+#message-input {
+  margin: 0px;
+  border: none;
+  border-bottom: 1px solid gray;
 }
 #message-input {
   margin: 0px;
