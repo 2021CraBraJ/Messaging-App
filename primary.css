@@ -1,0 +1,31 @@
+#message-input {
+  left: 0%;
+  width: 80%;
+  position: absolute;
+}
+#send-button {
+  right: 0%;
+  width: 16%;
+  margin: 0px;
+  box-shadow: none;
+  position: absolute;
+  background-color: lightgray;
+}
+#messages {
+  top: 0%;
+  height: 90%;
+  position: absolute;
+}
+#input-area {
+  bottom: 0%;
+  height: 10%;
+  position:  relative;
+}
+#message-input {
+  margin: 0px;
+  border: none;
+  border-bottom: 1px solid gray;
+}
+*:focus {
+    outline: none;
+}
