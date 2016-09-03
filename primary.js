@@ -28,6 +28,16 @@ function SignIn() {
   var credential = error.credential;
   });
 }
+function SignOut() {
+  try {
+    firebase.auth().signOut()
+      $("#login-button").show();
+      $("#user-menu-button").hide();
+      $("#user-menu-button").text("");
+  } catch (e) {
+    
+  }
+}
 window.onload = function() {
   window.Application = new Application();
 };
