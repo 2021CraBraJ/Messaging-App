@@ -28,4 +28,7 @@ function SignIn() {
   var credential = error.credential;
   });
 }
+window.onload = function() {
+  window.Application = new Application();
+};
 ///End
