@@ -3,24 +3,29 @@
   <head>
     <meta charset="utf-8">
     <title>TBD</title>
+	<script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
     <script src="jquery-3.1.0.min.js"></script>
     <link rel="stylesheet" href="primary.css">
   </head>
   <body>
     <header id="header">
-      <img src="menu.png" id="menu-button"/> <h1 id="name-header">TBD</h1> <h1 id="login-button">Login</h1><h1 id="user-menu-button" hidden="hidden"></h1>
-      <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
-      <script type="text/javascript">
-      var config = {
-              apiKey: "AIzaSyB-_oxVKECJutT52DBsyoM0cyVnv9_LHUk",
-              authDomain: "test-baf2c.firebaseapp.com",
-              databaseURL: "https://test-baf2c.firebaseio.com",
-              storageBucket: "test-baf2c.appspot.com",
-      }
-      firebase.initializeApp(config);
-      </script>
-      <script src="primary.js"></script>
+      <img src="menu.png" id="menu-button"/> <h1 id="name-header">TBD</h1> <h1 id="login-button">Login</h1><h1 id="user-menu-button" hidden="hidden" title="Log-out"></h1>
     </header>
+	<!-- Firebase -->
+	<script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+    <script type="text/javascript">
+    var config = {
+            apiKey: "AIzaSyB-_oxVKECJutT52DBsyoM0cyVnv9_LHUk",
+            authDomain: "test-baf2c.firebaseapp.com",
+            databaseURL: "https://test-baf2c.firebaseio.com",
+            storageBucket: "test-baf2c.appspot.com",
+    }
+    firebase.initializeApp(config);
+    </script>
+	<div id="message-box" hidden="true">
+		<input type="text"  id="message-input"/><button id="send-button">Send</button>
+		<script src="primary.js"></script>
+	</div>
   </div>
   </body>
 </html>
