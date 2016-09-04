@@ -26,6 +26,7 @@ function Application() {
             name: firebase.auth().currentUser.displayName,
             type: $("input[name=type]:checked").val()
         });
+        $("#first-time-setup").hide();
         $("#message-box").show();
         $("#messages").empty();
         Application.LoadMessages();
