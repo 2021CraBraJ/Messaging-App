@@ -1,6 +1,6 @@
 ///File primary.js
 ///Description the main javascript file for the Application
-'use strict';
+//'use strict';
 //Declerations
 var provider = new firebase.auth.GoogleAuthProvider(),
     signed_in = null;
@@ -12,13 +12,24 @@ function Application() {
     this.signOutButton = document.getElementById('logout-button');
     this.deleteAccountButton = document.getElementById('delete-account-button');
     this.sendButton = document.getElementById('send-button');
+    this.accountSetupButton = document.getElementById('account-setup-button');
 
     //Bind event handelers
     this.signInButton.addEventListener('click', this.SignIn);
     this.userMenuButton.addEventListener('click', this.ShowUserMenu);
     this.signOutButton.addEventListener('click', this.SignOut);
     this.sendButton.addEventListener('click', this.SendMessage);
-    this.deleteAccountButton.addEventListener('click', this.DeleteAccount)
+    this.deleteAccountButton.addEventListener('click', this.DeleteAccount);
+    this.accountSetupButton.addEventListener('click', function() {
+        firebase.database().ref('users/' + firebase.auth().currentUser.uid).set({
+            email: firebase.auth().currentUser.email,
+            name: firebase.auth().currentUser.displayName,
+            type: $("input[name=type]:checked").val()
+        });
+        $("#message-box").show();
+        $("#messages").empty();
+        Application.LoadMessages();
+    });
 }
 
 //The Application's SignIn method
@@ -29,9 +40,7 @@ Application.prototype.SignIn = function() {
         $("#login-button").hide();
         $("#user-menu-button").show();
         $("#user-menu-button").text(user.displayName);
-        $("#message-box").show();
-        $("#messages").empty()
-        Application.LoadMessages();
+        Application.userExists();
     }).catch(function(error) {
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -56,13 +65,17 @@ Application.prototype.SignOut = function() {
 
 //The Application's DeleteAccount method
 Application.prototype.DeleteAccount = function() {
-    firebase.auth().currentUser.delete().then(function() {
-        $("#login-button").show();
-        $("#user-menu-button").hide();
-        $("#user-menu-button").text("");
-        $("#message-box").hide();
-        $("#user-menu").slideToggle();
-    }, function(error) {
+    firebase.database().ref('users/' + firebase.auth().currentUser.uid).remove().then(function() {
+        firebase.auth().currentUser.delete().then(function() {
+            $("#login-button").show();
+            $("#user-menu-button").hide();
+            $("#user-menu-button").text("");
+            $("#message-box").hide();
+            $("#user-menu").slideToggle();
+        }, function(error) {
+
+        });
+    }).catch(function(error) {
 
     });
 }
@@ -70,11 +83,6 @@ Application.prototype.DeleteAccount = function() {
 //The Application's ShowUserMenu method
 Application.prototype.ShowUserMenu = function() {
     $("#user-menu").slideToggle();
-}
-
-//The Application's FirstLoginSetup method
-Application.prototype.FirstLoginSetup = function() {
-    //TODO: add account setup form
 }
 
 //The Application's SendMessage method
@@ -103,6 +111,21 @@ Application.prototype.showMessage = function(message, name) {
     $("#messages").append("<li>(" + name + ")" + message + "</li>");
 }
 
+//The Application's userExists method
+Application.prototype.userExists = function() {
+    var usersRef = firebase.database().ref('users/');
+    usersRef.child(firebase.auth().currentUser.uid).once('value', function(snapshot) {
+        var exists = (snapshot.val() !== null);
+        if (!exists) {
+            $("#first-time-setup").show()
+        } else {
+            $("#message-box").show();
+            $("#messages").empty();
+            Application.LoadMessages();
+        }
+    });
+}
+
 //The Firebase onAuthStateChanged handeler
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
@@ -110,7 +133,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         $("#login-button").hide();
         $("#user-menu-button").show();
         $("#user-menu-button").text(user.displayName);
-        $("#message-box").show();
+        Application.userExists();
     } else {
         signed_in = false;
     }

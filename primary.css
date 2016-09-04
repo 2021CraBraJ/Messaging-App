@@ -100,7 +100,17 @@ html {
     position: absolute;
     background-color: lightgray;
 }
-
+#first-time-setup {
+  top: 6%;
+  left: 0px;
+  right: 0px;
+  bottom: 0%;
+  width: 100%;
+  margin: 0px;
+  height: 94%;
+  position: absolute;
+  text-align: center;
+}
 *::selection {
     background-color: transparent;
 }
