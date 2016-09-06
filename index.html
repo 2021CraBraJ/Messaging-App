@@ -10,10 +10,9 @@
 
 <body>
     <header id="header">
-        <img src="images/menu.png" id="menu-button" />
-        <h1 id="name-header">TBD</h1>
-        <h1 id="login-button">Login</h1>
-        <h1 id="user-menu-button" hidden="hidden" title="Log-out"></h1>
+        <span id="name-header">TBD</span>
+        <span id="login-button">Login</span>
+        <span id="user-menu-button" hidden="hidden" title="Menu"></span>
     </header>
     <div id="user-menu" hidden="true">
         <h3 class="user-menu-option" id="logout-button">Log Out</h3>
@@ -21,21 +20,21 @@
         <h3 class="user-menu-option" id="delete-account-button" style="color: red">Delete Account</h3>
     </div>
     <div id="first-time-setup" hidden="true">
-      <h1>First time setup!</h1>
-      <h3>Please enter the information requested below.</h3>
+        <h1>First time setup!</h1>
+        <h3>Please enter the information requested below.</h3>
         <form>
-          <label for="account-type-selection">Who are you?</label>
-          <br>
-          <input type="radio" name="type" value="student" checked="true">A Student<br>
-          <input type="radio" name="type" value="teacher">A Teacher<br>
+            <label for="account-type-selection">Who are you?</label>
+            <br>
+            <input type="radio" name="type" value="student" checked="true">A Student<br>
+            <input type="radio" name="type" value="teacher">A Teacher<br>
         </form>
         <button type="button" id="account-setup-button">Submit</button>
     </div>
     <div id="message-box" hidden="true">
-        <ul id="messages">
-        </ul>
-        <input type="text" id="message-input" /><button id="send-button">Send</button>
+        <div id="messages">
+        </div>
     </div>
+    <input type="text" id="message-input" /><button id="send-button">Send</button>
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
     <script type="text/javascript">

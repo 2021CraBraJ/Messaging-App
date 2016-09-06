@@ -1,6 +1,6 @@
 ///File primary.js
 ///Description the main javascript file for the Application
-'use strict';
+//'use strict';
 //Declerations
 var provider = new firebase.auth.GoogleAuthProvider(),
     signed_in = null;
@@ -90,12 +90,14 @@ Application.prototype.ShowUserMenu = function() {
 
 //The Application's SendMessage method
 Application.prototype.SendMessage = function() {
-    firebase.database().ref('messages/' + Date.now() + Math.floor(Math.random() * 10001)).set({
-        message: $("#message-input").val(),
-        sender: firebase.auth().currentUser.uid,
-        name: firebase.auth().currentUser.displayName
-    });
-    $("#message-input").val(null);
+    if ($.trim($('#message-input').val()).length > 0) {
+        firebase.database().ref('messages/' + Date.now() + Math.floor(Math.random() * 10001)).set({
+            message: $("#message-input").val(),
+            sender: firebase.auth().currentUser.uid,
+            name: firebase.auth().currentUser.displayName
+        });
+        $("#message-input").val(null);
+    }
 }
 
 //The Application's LoadMessages method
@@ -103,15 +105,20 @@ Application.prototype.LoadMessages = function() {
     var messageRef = firebase.database().ref("messages");
     messageRef.off();
 
-    messageRef.limitToLast(20).on('child_added', function(data) {
+    messageRef.limitToLast(35).on('child_added', function(data) {
         var message = data.val();
-        Application.showMessage(message.message, message.name)
-    })
+        Application.showMessage(message.message, message.name, data.key);
+    });
+    messageRef.on('child_removed', function(data) {
+        $("#" + data.key).remove();
+        document.getElementById('message-box').scrollTop = document.getElementById('message-box').scrollHeight;
+    });
 }
 
 //The Application's showMessage method
-Application.prototype.showMessage = function(message, name) {
-    $("#messages").append("<li>(" + name + ")" + message + "</li>");
+Application.prototype.showMessage = function(message, name, id) {
+    $("#messages").append("<li id='" + id + "'>(" + name + ")" + message + "</li>");
+    document.getElementById('message-box').scrollTop = document.getElementById('message-box').scrollHeight;
 }
 
 //The Application's userExists method

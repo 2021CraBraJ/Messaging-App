@@ -1,116 +1,103 @@
 html {
     width: 100%;
     height: 100%;
-    padding: 0px;
-    margin: 0px;
     background-color: #EEE8AA;
 }
 
 #header {
     top: 0%;
     left: 0px;
-    width: 100%;
-    height: 6%;
     right: 0px;
-    margin: 0px;
+    width: 100%;
+    height: 35px;
+    font-size: 30px;
     position: absolute;
     background-color: #9370DB;
 }
 
-#menu-button {
-    left: 1%;
-    width: 5vh;
-    top: 0.6vh;
-    height: 5vh;
-    margin: 0px;
-    cursor: pointer;
-    position: absolute;
-}
-
-#menu-button::selection {
-    background-color: transparent;
-}
-
 #login-button {
     right: 1%;
-    margin: 0px;
     cursor: pointer;
     position: absolute;
 }
 
 #name-header {
-    left: 40%;
-    right: 40%;
+    left: 3%;
     width: 20%;
-    margin: 0%;
     position: absolute;
 }
 
 .user-menu-option {
-    margin: 0px;
     cursor: pointer;
     text-align: center;
 }
 
 #user-menu-button {
     right: 1%;
-    margin: 0px;
     cursor: pointer;
     text-align: center;
     position: absolute;
 }
 
 #user-menu {
-    top: 6%;
+    top: 35px;
     right: 0%;
-    z-index: 5;
     width: 20%;
-    margin: 0px;
+    z-index: 5;
     position: absolute;
     background-color: white;
 }
 
 #message-input {
     left: 0%;
-    height: 3%;
     width: 90%;
-    bottom: 0%;
-    margin: 0px;
+    bottom: 0px;
+    height: 16px;
+    opacity: 0.5;
     position: absolute;
+    background: aliceblue;
 }
 
 #send-button {
     right: 0%;
-    height: 4%;
     width: 10%;
-    bottom: 0%;
-    margin: 0px;
+    height: 24px;
+    bottom: 0px;
     position: absolute;
+    border-radius: 0px;
 }
 
 #messages {
-    top: 6%;
+    list-style: none;
+}
+
+#message-box {
+    top: 35px;
     left: 0%;
     right: 0%;
-    width: 97%;
     bottom: 4%;
+    width: 100%;
     height: 90%;
-    margin: 0px;
-    list-style: none;
+    overflow: auto;
     position: absolute;
     background-color: #EEE8AA;
 }
+
 #first-time-setup {
-  top: 6%;
-  left: 0px;
-  right: 0px;
-  bottom: 0%;
-  width: 100%;
-  margin: 0px;
-  height: 94%;
-  position: absolute;
-  text-align: center;
+    top: 6%;
+    left: 0px;
+    right: 0px;
+    bottom: 0%;
+    width: 100%;
+    height: 94%;
+    position: absolute;
+    text-align: center;
 }
+
+* {
+    margin: 0px;
+}
+
 *::selection {
     background-color: transparent;
 }
