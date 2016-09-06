@@ -1,6 +1,6 @@
 ///File primary.js
 ///Description the main javascript file for the Application
-//'use strict';
+'use strict';
 //Declerations
 var provider = new firebase.auth.GoogleAuthProvider(),
     signed_in = null;
@@ -59,6 +59,7 @@ Application.prototype.SignOut = function() {
         $("#user-menu-button").text("");
         $("#message-box").hide();
         $("#user-menu").slideToggle();
+        $("#first-time-setup").hide();
     } catch (e) {
         console.error(e);
     }
@@ -73,6 +74,7 @@ Application.prototype.DeleteAccount = function() {
             $("#user-menu-button").text("");
             $("#message-box").hide();
             $("#user-menu").slideToggle();
+            $("#first-time-setup").hide();
         }, function(error) {
 
         });
@@ -134,12 +136,24 @@ firebase.auth().onAuthStateChanged(function(user) {
         $("#login-button").hide();
         $("#user-menu-button").show();
         $("#user-menu-button").text(user.displayName);
+        $("#first-time-setup").hide();
         Application.userExists();
     } else {
         signed_in = false;
     }
 });
 
+//Bind key handelers.
+$("#message-input").keydown(function(e) {
+   switch (e.which) {
+       case 13:
+           Application.SendMessage();
+        break;
+        default:
+            return;
+   }
+   e.preventDefault();
+});
 //Loads the app and messages on window load event
 window.onload = function() {
     window.Application = new Application();
