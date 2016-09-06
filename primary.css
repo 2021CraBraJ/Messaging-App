@@ -3,7 +3,7 @@ html {
     height: 100%;
     padding: 0px;
     margin: 0px;
-    background-color: white;
+    background-color: #EEE8AA;
 }
 
 #header {
@@ -14,7 +14,7 @@ html {
     right: 0px;
     margin: 0px;
     position: absolute;
-    background-color: green;
+    background-color: #9370DB;
 }
 
 #menu-button {
@@ -98,7 +98,7 @@ html {
     margin: 0px;
     list-style: none;
     position: absolute;
-    background-color: lightgray;
+    background-color: #EEE8AA;
 }
 #first-time-setup {
   top: 6%;
