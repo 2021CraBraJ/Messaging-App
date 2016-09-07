@@ -3,7 +3,9 @@
 //'use strict';
 //Declerations
 var provider = new firebase.auth.GoogleAuthProvider(),
-    signed_in = null;
+    signed_in = null,
+    window_focus = true,
+    missed_messages = 0;
 
 function Application() {
     //Get buttons
@@ -67,20 +69,14 @@ Application.prototype.SignOut = function() {
 
 //The Application's DeleteAccount method
 Application.prototype.DeleteAccount = function() {
-    firebase.database().ref('users/' + firebase.auth().currentUser.uid).remove().then(function() {
-        firebase.auth().currentUser.delete().then(function() {
-            $("#login-button").show();
-            $("#user-menu-button").hide();
-            $("#user-menu-button").text("");
-            $("#message-box").hide();
-            $("#user-menu").slideToggle();
-            $("#first-time-setup").hide();
-        }, function(error) {
-
-        });
-    }).catch(function(error) {
-
-    });
+    firebase.database().ref('users/' + firebase.auth().currentUser.uid).remove().then(function() {}).catch(function(error) {});
+    firebase.auth().currentUser.delete().then(function() {}, function(error) {});
+    $("#login-button").show();
+    $("#user-menu-button").hide();
+    $("#user-menu-button").text("");
+    $("#message-box").hide();
+    $("#user-menu").slideToggle();
+    $("#first-time-setup").hide();
 }
 
 //The Application's ShowUserMenu method
@@ -117,17 +113,21 @@ Application.prototype.LoadMessages = function() {
 
 //The Application's showMessage method
 Application.prototype.showMessage = function(message, name, id) {
+    if (!window_focus) {
+        missed_messages++
+        document.title = "Bulldog Chat" + "|" + missed_messages;
+    }
     var message_formated = "<li id='" + id + "'></li>";
     $("#messages").append(message_formated);
-    $("#" + id).text(name + " | " + message);
+    $("#" + id).text("[" + name + "] " + message);
     document.getElementById('message-box').scrollTop = document.getElementById('message-box').scrollHeight;
 }
 
 //The Application's userExists method
 Application.prototype.userExists = function() {
     var usersRef = firebase.database().ref('users/');
-    usersRef.child(firebase.auth().currentUser.uid).once('value', function(snapshot) {
-        var exists = (snapshot.val() !== null);
+    usersRef.child(firebase.auth().currentUser.uid).once('value', function(data) {
+        var exists = (data.val() !== null);
         if (!exists) {
             $("#first-time-setup").show()
         } else {
@@ -152,6 +152,14 @@ firebase.auth().onAuthStateChanged(function(user) {
     }
 });
 
+//Window focus handelers
+$(window).focus(function() {
+    window_focus = true;
+    missed_messages = 0;
+    document.title = "Bulldog Chat";
+}).blur(function() {
+    window_focus = false;
+});
 //Bind key handelers.
 $("#message-input").keydown(function(e) {
     switch (e.which) {
@@ -163,6 +171,7 @@ $("#message-input").keydown(function(e) {
     }
     e.preventDefault();
 });
+
 //Loads the app and messages on window load event
 window.onload = function() {
     window.Application = new Application();
