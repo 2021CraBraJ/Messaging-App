@@ -117,7 +117,9 @@ Application.prototype.LoadMessages = function() {
 
 //The Application's showMessage method
 Application.prototype.showMessage = function(message, name, id) {
-    $("#messages").append("<li id='" + id + "'>(" + name + ")" + message + "</li>");
+    var message_formated = "<li id='" + id + "'></li>";
+    $("#messages").append(message_formated);
+    $("#" + id).text(name + " | " + message);
     document.getElementById('message-box').scrollTop = document.getElementById('message-box').scrollHeight;
 }
 
