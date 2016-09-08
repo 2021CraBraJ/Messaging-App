@@ -1,7 +1,7 @@
 html {
     width: 100%;
     height: 100%;
-    background: red; /* For browsers that do not support gradients */
+    background: gray; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(to top right, #5cd6d6, #ff9900); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(to top right, #5cd6d6, #ff9900); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(to top right, #5cd6d6, #ff9900); /* For Firefox 3.6 to 15 */
@@ -15,7 +15,7 @@ html {
     right: 0px;
     width: 100%;
     height: 55px;
-    font-size: 43px;
+    font-size: 40px;
     position: absolute;
     background-color: transparent;
     font-family: 'Futura-CondensedMedium', Futura;
@@ -57,15 +57,15 @@ html {
 }
 
 #header-icon {
-    width: 43px;
-    height: 43px;
+    width: 38px;
+    height: 38px;
 }
 
 #message-input {
     left: 0%;
     width: 90%;
     bottom: 0px;
-    height: 28px;
+    height: 25px;
     opacity: 0.5;
     position: absolute;
     background: aliceblue;
