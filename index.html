@@ -2,7 +2,7 @@
 <html lang="en">
 
 <meta charset="utf-8">
-<title>Bulldog Chat</title>
+<title>Auxilium Talk</title>
 <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
 <script src="js/jquery-3.1.0.min.js"></script>
 <link rel="stylesheet" href="css/primary.css">
@@ -11,7 +11,8 @@
 
 <body>
     <header id="header">
-        <span id="name-header">Bulldog Chat</span>
+        <img id="header-icon" src="favicon.ico" />
+        <span id="name-header">Auxilium Talk</span>
         <span id="login-button">Login</span>
         <span id="user-menu-button" hidden="hidden" title="Menu"></span>
     </header>
@@ -35,7 +36,9 @@
         <div id="messages">
         </div>
     </div>
-    <input type="text" id="message-input" /><button id="send-button">Send</button>
+    <div id="input" hidden="true">
+        <input type="text" id="message-input" /><button id="send-button">Send</button>
+    </div>
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
     <script type="text/javascript">

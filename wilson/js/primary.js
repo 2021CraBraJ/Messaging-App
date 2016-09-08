@@ -40,15 +40,14 @@ Application.prototype.SignIn = function() {
     firebase.auth().signInWithPopup(provider).then(function(result) {
         var token = result.credential.accessToken;
         var user = result.user;
-        $("#input").show();
         $("#login-button").hide();
         $("#user-menu-button").show();
         $("#user-menu-button").text(user.displayName);
         Application.userExists();
     }).catch(function(error) {
-        var email = error.email;
         var errorCode = error.code;
         var errorMessage = error.message;
+        var email = error.email;
         var credential = error.credential;
     });
 }
@@ -56,15 +55,13 @@ Application.prototype.SignIn = function() {
 //The Application's SignOut method
 Application.prototype.SignOut = function() {
     try {
-        $("#send-button").hide();
-        $("#message-box").hide();
-        firebase.auth().signOut();
+        firebase.auth().signOut()
         $("#login-button").show();
-        $("#message-input").hide();
-        $("#user-menu").slideToggle();
         $("#user-menu-button").hide();
-        $("#first-time-setup").hide();
         $("#user-menu-button").text("");
+        $("#message-box").hide();
+        $("#user-menu").slideToggle();
+        $("#first-time-setup").hide();
     } catch (e) {
         console.error(e);
     }
@@ -73,15 +70,13 @@ Application.prototype.SignOut = function() {
 //The Application's DeleteAccount method
 Application.prototype.DeleteAccount = function() {
     firebase.database().ref('users/' + firebase.auth().currentUser.uid).remove().then(function() {}).catch(function(error) {});
-    $("#send-button").hide();
-    $("#message-box").hide();
+    firebase.auth().currentUser.delete().then(function() {}, function(error) {});
     $("#login-button").show();
-    $("#message-input").hide();
     $("#user-menu-button").hide();
+    $("#user-menu-button").text("");
+    $("#message-box").hide();
     $("#user-menu").slideToggle();
     $("#first-time-setup").hide();
-    $("#user-menu-button").text("");
-    firebase.auth().currentUser.delete().then(function() {}, function(error) {});
 }
 
 //The Application's ShowUserMenu method
@@ -105,7 +100,8 @@ Application.prototype.SendMessage = function() {
 Application.prototype.LoadMessages = function() {
     var messageRef = firebase.database().ref("messages");
     messageRef.off();
-    messageRef.limitToLast(20).on('child_added', function(data) {
+
+    messageRef.limitToLast(35).on('child_added', function(data) {
         var message = data.val();
         Application.showMessage(message.message, message.name, data.key);
     });
@@ -119,7 +115,7 @@ Application.prototype.LoadMessages = function() {
 Application.prototype.showMessage = function(message, name, id) {
     if (!window_focus) {
         missed_messages++
-        document.title = "Auxilium Talk" + "|" + missed_messages;
+        document.title = "Bulldog Chat" + "|" + missed_messages;
     }
     var message_formated = "<li id='" + id + "'></li>";
     $("#messages").append(message_formated);
@@ -146,7 +142,6 @@ Application.prototype.userExists = function() {
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         signed_in = true;
-        $("#input").show();
         $("#login-button").hide();
         $("#user-menu-button").show();
         $("#user-menu-button").text(user.displayName);
@@ -161,7 +156,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 $(window).focus(function() {
     window_focus = true;
     missed_messages = 0;
-    document.title = "Auxilium Talk";
+    document.title = "Bulldog Chat";
 }).blur(function() {
     window_focus = false;
 });

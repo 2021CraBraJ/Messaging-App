@@ -3,7 +3,6 @@ html {
     height: 100%;
     background-color: #EEE8AA;
 }
-
 @import 'https://fonts.googleapis.com/css?family=Orbitron';
 #header {
     top: 0%;
@@ -24,10 +23,8 @@ html {
 }
 
 #name-header {
+    left: 3%;
     width: 20%;
-    left: 35px;
-    width: 250px;
-    text-align: left;
     position: absolute;
 }
 
@@ -50,11 +47,6 @@ html {
     z-index: 5;
     position: absolute;
     background-color: white;
-}
-
-#header-icon {
-    width: 35px;
-    height: 35px;
 }
 
 #message-input {
