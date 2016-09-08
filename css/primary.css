@@ -93,7 +93,7 @@ html {
     height: 90%;
     overflow: auto;
     position: absolute;
-    background-color: #EEE8AA;
+    background: transparent;
 }
 
 #first-time-setup {
@@ -112,5 +112,5 @@ html {
 }
 
 *::selection {
-    background-color: transparent;
+    background-color: #99ff99;
 }
