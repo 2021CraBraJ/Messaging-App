@@ -82,6 +82,7 @@ html {
 
 #messages {
     list-style: none;
+    font-family: "Century Gothic", Futura;
 }
 
 #message-box {
