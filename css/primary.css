@@ -14,7 +14,7 @@ html {
     left: 0px;
     right: 0px;
     width: 100%;
-    height: 45px;
+    height: 55px;
     font-size: 43px;
     position: absolute;
     background-color: transparent;
@@ -65,10 +65,11 @@ html {
     left: 0%;
     width: 90%;
     bottom: 0px;
-    height: 30px;
+    height: 28px;
     opacity: 0.5;
     position: absolute;
     background: aliceblue;
+    font-size: 14px;
 }
 
 #send-button {
@@ -83,7 +84,7 @@ html {
 #messages {
     list-style: none;
     font-family: "Century Gothic", Futura;
-    font-size: 21px;
+    font-size: 19px;
 }
 
 #message-box {
