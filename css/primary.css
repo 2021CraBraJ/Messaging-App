@@ -14,8 +14,8 @@ html {
     left: 0px;
     right: 0px;
     width: 100%;
-    height: 40px;
-    font-size: 35px;
+    height: 45px;
+    font-size: 43px;
     position: absolute;
     background-color: transparent;
     font-family: 'Futura-CondensedMedium', Futura;
@@ -57,15 +57,15 @@ html {
 }
 
 #header-icon {
-    width: 35px;
-    height: 35px;
+    width: 43px;
+    height: 43px;
 }
 
 #message-input {
     left: 0%;
     width: 90%;
     bottom: 0px;
-    height: 16px;
+    height: 30px;
     opacity: 0.5;
     position: absolute;
     background: aliceblue;
@@ -74,7 +74,7 @@ html {
 #send-button {
     right: 0%;
     width: 10%;
-    height: 24px;
+    height: 30px;
     bottom: 0px;
     position: absolute;
     border-radius: 0px;
@@ -83,6 +83,7 @@ html {
 #messages {
     list-style: none;
     font-family: "Century Gothic", Futura;
+    font-size: 21px;
 }
 
 #message-box {
@@ -95,6 +96,7 @@ html {
     overflow: auto;
     position: absolute;
     background: transparent;
+    font-family: "Century Gothic", Futura;
 }
 
 #first-time-setup {
