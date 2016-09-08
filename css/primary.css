@@ -6,6 +6,7 @@ html {
     background: -o-linear-gradient(to top right, #5cd6d6, #ff9900); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(to top right, #5cd6d6, #ff9900); /* For Firefox 3.6 to 15 */
     background: linear-gradient(to top right, #5cd6d6, #ff9900); /* Standard syntax (must be last) */
+    background-repeat: repeat-x;
 }
 
 @import 'https://fonts.googleapis.com/css?family=Orbitron';
