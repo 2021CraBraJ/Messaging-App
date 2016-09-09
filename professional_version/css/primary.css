@@ -73,13 +73,6 @@ html {
     height: 24px;
     bottom: 0px;
     position: absolute;
-    border-radius: 0px;
-    text-decoration: none;
-    font-family: Courier New;
-}
-#send-button:hover{
-      background: #3cb0fd;
-      text-decoration: none;
 }
 
 #messages {
