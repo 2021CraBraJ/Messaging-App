@@ -73,15 +73,9 @@ html {
     height: 24px;
     bottom: 0px;
     position: absolute;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
     border-radius: 0px;
-    font-family: Courier New;
-    color: #ffffff;
-    font-size: 20px;
-    background: #3498db;
-    padding: 5px 10px 5px 10px;
     text-decoration: none;
+    font-family: Courier New;
 }
 #send-button:hover{
       background: #3cb0fd;
