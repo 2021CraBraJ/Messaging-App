@@ -1,7 +1,7 @@
 html {
     width: 100%;
     height: 100%;
-    background: #EEE8AA;
+    background: #2F4F4F;
     
 }
 
@@ -15,7 +15,6 @@ html {
     font-size: 35px;
     position: absolute;
     background-color: transparent;
-    font-family: 'Futura-CondensedMedium', Futura;
 }
 
 #login-button {
@@ -50,7 +49,9 @@ html {
     width: 20%;
     z-index: 5;
     position: absolute;
-    background-color: white;
+    background-color: .transparent{
+  background:rgba(0,0,0,0.5);
+};
 }
 
 #header-icon {
@@ -94,7 +95,6 @@ html {
     overflow: auto;
     position: absolute;
     background: transparent;
-    font-family: "Century Gothic", Futura;
 }
 
 #first-time-setup {
